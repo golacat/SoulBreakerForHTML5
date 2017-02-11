@@ -4,7 +4,15 @@
       true
     ]
   ],
-  "excluded-modules": [],
+  "excluded-modules": [
+    "TiledMap",
+    "Spine Skeleton",
+    "VideoPlayer",
+    "RichText",
+    "MotionStreak",
+    "Collider",
+    "DragonBones"
+  ],
   "group-list": [
     "default"
   ],

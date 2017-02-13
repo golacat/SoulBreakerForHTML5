@@ -281,7 +281,6 @@
     "_enabled": true,
     "label": {
       "__id__": 6
-    },
-    "text": "Hello, World!"
+    }
   }
 ]

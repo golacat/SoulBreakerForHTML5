@@ -6,17 +6,29 @@ cc.Class({
             default: null,
             type: cc.Label
         },
-        // defaults, set visually when attaching this script to the Canvas
-        text: 'Hello, World!'
     },
 
     // use this for initialization
     onLoad: function () {
-        this.label.string = this.text;
+        cc.log("[Splash] onLoad.");
+        this.label.node.opacity = 0;        
+        this.label.node.runAction(
+            cc.sequence(
+                cc.fadeIn(0.5),
+                cc.delayTime(3.0),
+                cc.fadeOut(0.5),
+                cc.callFunc(this.CallBack, this)
+                )
+            );
     },
 
     // called every frame
     update: function (dt) {
 
     },
+
+    // slash animation end
+    CallBack: function () {
+        cc.log("[Splash] CallBack");
+    }
 });

@@ -2,7 +2,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        label: {
+        splashLabel: {
             default: null,
             type: cc.Label
         },
@@ -11,8 +11,8 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         cc.log("[Splash] onLoad.");
-        this.label.node.opacity = 0;        
-        this.label.node.runAction(
+        this.splashLabel.node.opacity = 0;        
+        this.splashLabel.node.runAction(
             cc.sequence(
                 cc.fadeIn(0.5),
                 cc.delayTime(3.0),
@@ -23,12 +23,27 @@ cc.Class({
     },
 
     // called every frame
-    update: function (dt) {
+    // update: function (dt) {
 
-    },
+    // },
 
     // slash animation end
     CallBack: function () {
         cc.log("[Splash] CallBack");
-    }
+        // cc.director.loadScene("Title", this.onLaunchedLoadScene);        
+    },
+
+    // onLaunchedLoadScene: function () {
+    //     cc.log("[Splash] onLaunchedLoadScene");
+    //     cc.director.runScene(titleScene, this.onBeforeLoadScene, this.onLaunched);
+    // },
+
+    // onBeforeLoadScene: function () {
+    //     cc.log("[Splash] onBeforeLoadScene");
+    // },
+
+    // onLaunched: function () {
+    //     cc.log("[Splash] onLaunched");
+    // },
+
 });

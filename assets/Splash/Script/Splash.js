@@ -30,20 +30,13 @@ cc.Class({
     // slash animation end
     CallBack: function () {
         cc.log("[Splash] CallBack");
-        // cc.director.loadScene("Title", this.onLaunchedLoadScene);        
+
+        cc.director.loadScene('Title', this.onLoadSceneFinish);
     },
 
-    // onLaunchedLoadScene: function () {
-    //     cc.log("[Splash] onLaunchedLoadScene");
-    //     cc.director.runScene(titleScene, this.onBeforeLoadScene, this.onLaunched);
-    // },
-
-    // onBeforeLoadScene: function () {
-    //     cc.log("[Splash] onBeforeLoadScene");
-    // },
-
-    // onLaunched: function () {
-    //     cc.log("[Splash] onLaunched");
-    // },
+    // Load Title Scene Finish. (Called After Title Scene OnLoad)
+    onLoadSceneFinish: function () {
+        cc.log("[Splash] onLoadSceneFinish");
+    }
 
 });

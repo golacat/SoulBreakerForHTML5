@@ -2,6 +2,10 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
+        titleSprite: {
+            default: null,
+            type: cc.Sprite
+        },
         // foo: {
         //    default: null,      // The default value will be used only when the component attaching
         //                           to a node for the first time
@@ -18,10 +22,36 @@ cc.Class({
     onLoad: function () {
         cc.log("[Title] onLoad.");
 
+        // Make Background Circle - 50
+        this.MakeTitleCircle(50);
+
+        // Title Image Scale Action
+        this.titleSprite.node.opacity = 0;
+        this.titleSprite.node.runAction(
+            cc.sequence(
+                cc.spawn(
+                    cc.scaleTo(3.0, 0.5),
+                    cc.fadeIn(3.0)
+                ),
+                cc.callFunc(this.onCallBackTitleScale, this)
+            )
+        );
     },
 
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {
 
     // },
+
+    onCallBackTitleScale: function() {
+        cc.log("onCallBackTitleScale");
+    },
+
+    MakeTitleCircle: function (num) {
+        cc.log("MakeTitleCircle " + num)
+        for (var i=0; i < num; i++) {
+            // cc.Sprite title_circle = new cc.Sprite();
+
+        }        
+    }
 });

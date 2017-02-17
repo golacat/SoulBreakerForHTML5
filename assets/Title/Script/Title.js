@@ -6,10 +6,6 @@ cc.Class({
             default: null,
             type: cc.Sprite
         },
-        circlePrefab: {
-            default: null,
-            type: cc.Prefab
-        },
         // foo: {
         //    default: null,      // The default value will be used only when the component attaching
         //                           to a node for the first time
@@ -25,9 +21,6 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         cc.log("[Title] onLoad.");
-
-        // Make Background Circle - 50
-        this.MakeTitleCircle(50);
 
         // Title Image Scale Action
         this.titleSprite.node.opacity = 0;
@@ -50,24 +43,4 @@ cc.Class({
     onCallBackTitleScale: function() {
         cc.log("onCallBackTitleScale");
     },
-
-    MakeTitleCircle: function (num) {
-        cc.log("MakeTitleCircle " + num)
-        for (var i=0; i < num; i++) {
-            var circle = cc.instantiate(this.circlePrefab);
-
-            var temp = Math.round(Math.random() * 3);            
-            switch (temp) {
-                case 0: circle.color = new cc.color(255, 251, 118); break;
-                case 1: circle.color = new cc.color(166, 255,253); break;
-                case 2: circle.color = new cc.color(244, 140, 203); break;
-            }
-            
-            circle.x = 0;
-            circle.y = 0;
-
-            this.node.addChild(circle);
-
-        }        
-    }
 });

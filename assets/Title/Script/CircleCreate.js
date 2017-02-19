@@ -31,32 +31,54 @@ cc.Class({
 
     // },
 
+    // instantiate prefab, random position
     MakeTitleCircle: function (num) {
         cc.log("MakeTitleCircle " + num)
         for (var i=0; i < num; i++) {
             // instance prefab
             var circle = cc.instantiate(this.circlePrefab);
             
-            // random scale 0.1 ~ 0.6
-            circle.scale = Math.random() * 0.5 + 0.1;
-            //cc.log(circle.scale)
-
-            // 3 type color
-            var temp = Math.round(Math.random() * 2);            
-            //cc.log(temp);
-            switch (temp) {
-                case 0: circle.color = new cc.color(255, 251, 118); break;
-                case 1: circle.color = new cc.color(166, 255,253); break;
-                case 2: circle.color = new cc.color(244, 140, 203); break;
-            }
-            
-            // random position x: -240 ~ 240,  y: -400 ~ 400
+            // random position x: -240 ~ 240,  y: 500 ~ -500
             circle.x = (Math.random()*2 - 1) * 240;
-            circle.y = (Math.random()*2 - 1) * 400;
-            cc.log(circle.position)
+            circle.y = (Math.random()*2 - 1) * 500;
+            // cc.log(circle.position)
+            
+            this.MakeCircleRandom(circle);
 
             //circle.parent = circleNode;
             this.node.addChild(circle);
         }        
-    }
+    },
+    
+    // random scale, color and moveTo action
+    MakeCircleRandom: function (circle) {
+        // random scale 0.1 ~ 0.6
+        circle.scale = Math.random() * 0.5 + 0.1;
+        //cc.log(circle.scale)
+
+        // 3 type color
+        var temp = Math.round(Math.random() * 2);            
+        //cc.log(temp);
+        switch (temp) {
+            case 0: circle.color = new cc.color(255, 251, 118); break;
+            case 1: circle.color = new cc.color(166, 255,253); break;
+            case 2: circle.color = new cc.color(244, 140, 203); break;
+        }
+        
+        var time = (circle.position.y + 500) / 20.0;
+        
+        circle.runAction(cc.sequence(
+                cc.moveTo(time, cc.p(circle.position.x, -500)),
+                cc.callFunc(this.onCallBackCircleMove, this, circle)
+            ));
+    },
+
+    onCallBackCircleMove: function(circle) {
+        cc.log("onCallBackCircleMove");
+        
+        circle.x = (Math.random()*2 - 1) * 240;
+        circle.y = 500;
+        
+        this.MakeCircleRandom(circle);
+    },
 });

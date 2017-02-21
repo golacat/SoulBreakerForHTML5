@@ -395,7 +395,7 @@
     "_actualFontSize": 50,
     "_fontSize": 50,
     "_lineHeight": 40,
-    "_enableWrapText": false,
+    "_enableWrapText": true,
     "_N$file": {
       "__uuid__": "0f6fb81a-ea2f-4ff8-90cd-5a048883fdc9"
     },
@@ -431,6 +431,9 @@
     "_enabled": true,
     "titleSprite": {
       "__id__": 8
+    },
+    "titleLabel": {
+      "__id__": 10
     }
   }
 ]

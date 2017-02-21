@@ -6,6 +6,10 @@ cc.Class({
             default: null,
             type: cc.Sprite
         },
+        titleLabel: {
+            default: null,
+            type: cc.Label
+        },
         // foo: {
         //    default: null,      // The default value will be used only when the component attaching
         //                           to a node for the first time
@@ -33,6 +37,9 @@ cc.Class({
                 cc.callFunc(this.onCallBackTitleScale, this)
             )
         );
+        
+        // Title Label
+        this.titleLabel.node.opacity = 0;
     },
 
     // called every frame, uncomment this function to activate update callback

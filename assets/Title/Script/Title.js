@@ -49,5 +49,19 @@ cc.Class({
 
     onCallBackTitleScale: function() {
         cc.log("onCallBackTitleScale");
+        this.titleLabel.node.opacity = 255;
+        this.titleLabel.node.runAction(
+            cc.sequence(
+                cc.delayTime(1.0),
+                cc.callFunc(this.onCallBackTouchImageBlink(), this)
+            )
+        );
     },
+    
+    onCallBackTouchImageBlink: function() {
+        cc.log("onCallBackTouchImageBlink");
+        this.titleLabel.node.runAction(
+            cc.repeatForever(cc.blink(1.0, 1))
+            );
+    }
 });

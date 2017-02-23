@@ -429,6 +429,9 @@
       "__id__": 2
     },
     "_enabled": true,
+    "canvas": {
+      "__id__": 2
+    },
     "titleSprite": {
       "__id__": 8
     },

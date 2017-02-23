@@ -2,6 +2,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
+        canvas: cc.Node,
         titleSprite: {
             default: null,
             type: cc.Sprite
@@ -63,5 +64,23 @@ cc.Class({
         this.titleLabel.node.runAction(
             cc.repeatForever(cc.blink(1.0, 1))
             );
+
+        this.initTouchEvent();
+    },
+
+    initTouchEvent: function() {
+        cc.log("initTouchEvent");
+
+        this.canvas.on(cc.Node.EventType.TOUCH_START, function (event) {
+            cc.log("TOUCH_START");
+        }, this.node);
+
+        this.canvas.on(cc.Node.EventType.TOUCH_MOVE, function (event) {
+            cc.log("TOUCH_MOVE");
+        }, this.node);
+
+        this.canvas.on(cc.Node.EventType.TOUCH_END, function (event) {
+            cc.log("TOUCH_END");
+        }, this.node);
     }
 });

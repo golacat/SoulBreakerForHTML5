@@ -74,7 +74,7 @@ cc.Class({
     },
 
     onCallBackCircleMove: function(circle) {
-        cc.log("onCallBackCircleMove");
+        // cc.log("onCallBackCircleMove");
         
         circle.x = (Math.random()*2 - 1) * 240;
         circle.y = 500;

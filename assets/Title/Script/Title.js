@@ -71,7 +71,6 @@ cc.Class({
     // init touch event
     initTouchEvent: function() {
         cc.log("[Title] initTouchEvent");
-        cc.log("_isMenu is ", this._isMenu);
 
         this.canvas.on(cc.Node.EventType.TOUCH_START, event => {
             cc.log("[Title] TOUCH_START");
@@ -96,7 +95,7 @@ cc.Class({
     // touch end event
     onTouchEnd: function() {
         cc.log("[Title] onTouchEnd");
-        cc.log("_isMenu is ", this._isMenu);
+        cc.log("[Title] _isMenu is ", this._isMenu);
         if (this._isMenu == false) {
             // TOUCH THE SCREEN -> MENU
             this.titleLabel.node.stopAllActions();
@@ -110,6 +109,12 @@ cc.Class({
 
     // call back title label fadeout
     onCallBackTouchLabelFadeOutEnd: function() {
-        cc.log("onCallBackTouchLabelFadeOutEnd");
+        cc.log("[Title] onCallBackTouchLabelFadeOutEnd");
+        this.node.removeChild(this.titleLabel);
+        this.setMenu();
+    },
+
+    setMenu: function() {
+        cc.log("[Title] setMenu");
     }
 });

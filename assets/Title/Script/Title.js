@@ -2,27 +2,21 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
+        // node for touch event
         canvas: cc.Node,
+        // soulbreaker title sprite
         titleSprite: {
             default: null,
             type: cc.Sprite
         },
+        // touch the screen label
         titleLabel: {
             default: null,
             type: cc.Label
         },
 
+        // is menu for touch the screen
         _isMenu : false,
-        // foo: {
-        //    default: null,      // The default value will be used only when the component attaching
-        //                           to a node for the first time
-        //    url: cc.Texture2D,  // optional, default is typeof default
-        //    serializable: true, // optional, default is true
-        //    visible: true,      // optional, default is true
-        //    displayName: 'Foo', // optional
-        //    readonly: false,    // optional, default is false
-        // },
-        // ...
     },
 
     // use this for initialization
@@ -52,6 +46,7 @@ cc.Class({
 
     // },
 
+    // CallBack Title Image Scaled
     onCallBackTitleScale: function() {
         cc.log("[Title] onCallBackTitleScale");
         this.titleLabel.node.opacity = 255;
@@ -63,6 +58,7 @@ cc.Class({
         );
     },
     
+    // CallBack Title Label Blink
     onCallBackTouchImageBlink: function() {
         cc.log("[Title] onCallBackTouchImageBlink");
         this.titleLabel.node.runAction(
@@ -72,6 +68,7 @@ cc.Class({
         this.initTouchEvent();
     },
 
+    // init touch event
     initTouchEvent: function() {
         cc.log("[Title] initTouchEvent");
         cc.log("_isMenu is ", this._isMenu);
@@ -96,6 +93,7 @@ cc.Class({
         }, this);
     },
 
+    // touch end event
     onTouchEnd: function() {
         cc.log("[Title] onTouchEnd");
         cc.log("_isMenu is ", this._isMenu);
@@ -104,13 +102,14 @@ cc.Class({
             this.titleLabel.node.stopAllActions();
             this.titleLabel.node.runAction(
                 cc.fadeOut(0.1),
-                cc.callFunc(this.onCallBackTouchImageFadeOutEnd(), this)
+                cc.callFunc(this.onCallBackTouchLabelFadeOutEnd(), this)
             );
         } else {
         }
     },
 
-    onCallBackTouchImageFadeOutEnd: function() {
-        cc.log("onCallBackTouchImageFadeOutEnd");
+    // call back title label fadeout
+    onCallBackTouchLabelFadeOutEnd: function() {
+        cc.log("onCallBackTouchLabelFadeOutEnd");
     }
 });

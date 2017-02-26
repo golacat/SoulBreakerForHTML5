@@ -1,3 +1,5 @@
+var SB_Constants = require('SB_Constants');
+
 cc.Class({
     extends: cc.Component,
 
@@ -22,6 +24,7 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         cc.log("[Title] onLoad.");
+
         this._isMenu = false;
 
         // Title Image Scale Action
@@ -95,7 +98,7 @@ cc.Class({
     // touch end event
     onTouchEnd: function() {
         cc.log("[Title] onTouchEnd");
-        cc.log("[Title] _isMenu is ", this._isMenu);
+        // cc.log("[Title] _isMenu is ", this._isMenu);
         if (this._isMenu == false) {
             // TOUCH THE SCREEN -> MENU
             this.titleLabel.node.stopAllActions();

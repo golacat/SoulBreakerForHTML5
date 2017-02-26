@@ -254,7 +254,8 @@
     "_enabled": true,
     "circlePrefab": {
       "__uuid__": "09679d2c-bb2e-43f7-b433-8bf2bc1152dc"
-    }
+    },
+    "circleNum": 100
   },
   {
     "__type__": "cc.Node",

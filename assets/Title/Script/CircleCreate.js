@@ -1,3 +1,5 @@
+var SB_Constants = require('SB_Constants');
+
 cc.Class({
     extends: cc.Component,
 
@@ -6,6 +8,7 @@ cc.Class({
             default: null,
             type: cc.Prefab
         },
+        circleNum: 50,
         // foo: {
         //    default: null,      // The default value will be used only when the component attaching
         //                           to a node for the first time
@@ -22,8 +25,8 @@ cc.Class({
     onLoad: function () {
         cc.log("[CircleCreate] onLoad.");
 
-        // Make Background Circle - 50
-        this.MakeTitleCircle(50);
+        // Make Background Circle
+        this.MakeTitleCircle(this.circleNum);
     },
 
     // called every frame, uncomment this function to activate update callback
@@ -39,8 +42,8 @@ cc.Class({
             var circle = cc.instantiate(this.circlePrefab);
             
             // random position x: -240 ~ 240,  y: 500 ~ -500
-            circle.x = (Math.random()*2 - 1) * 240;
-            circle.y = (Math.random()*2 - 1) * 500;
+            circle.x = (Math.random()*2 - 1) * SB_Constants.MAIN_WIDTH/2;
+            circle.y = (Math.random()*2 - 1) * SB_Constants.MAIN_HEIGHT/2;
             // cc.log(circle.position)
             
             this.MakeCircleRandom(circle);
@@ -60,15 +63,16 @@ cc.Class({
         var temp = Math.round(Math.random() * 2);            
         //cc.log(temp);
         switch (temp) {
-            case 0: circle.color = new cc.color(255, 251, 118); break;
-            case 1: circle.color = new cc.color(166, 255,253); break;
-            case 2: circle.color = new cc.color(244, 140, 203); break;
+            // case 0: circle.color = new cc.color(255, 251, 118); break;
+            case 0: circle.color = SB_Constants.TITLE_CIRCLE_YELLOW; break;
+            case 1: circle.color = SB_Constants.TITLE_CIRCLE_BLUE; break;
+            case 2: circle.color = SB_Constants.TITLE_CIRCLE_VIOLET; break;
         }
         
-        var time = (circle.position.y + 500) / 20.0;
+        var time = (circle.position.y + SB_Constants.MAIN_HEIGHT/2) / 20.0;
         
         circle.runAction(cc.sequence(
-                cc.moveTo(time, cc.p(circle.position.x, -500)),
+                cc.moveTo(time, cc.p(circle.position.x, -SB_Constants.MAIN_HEIGHT/2)),
                 cc.callFunc(this.onCallBackCircleMove, this, circle)
             ));
     },
@@ -76,8 +80,8 @@ cc.Class({
     onCallBackCircleMove: function(circle) {
         // cc.log("onCallBackCircleMove");
         
-        circle.x = (Math.random()*2 - 1) * 240;
-        circle.y = 500;
+        circle.x = (Math.random()*2 - 1) * SB_Constants.MAIN_WIDTH/2;
+        circle.y = SB_Constants.MAIN_HEIGHT/2;
         
         this.MakeCircleRandom(circle);
     },

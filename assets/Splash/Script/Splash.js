@@ -1,3 +1,5 @@
+var SB_Constants = require('SB_Constants');
+
 cc.Class({
     extends: cc.Component,
 

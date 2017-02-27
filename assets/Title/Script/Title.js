@@ -16,6 +16,10 @@ cc.Class({
             default: null,
             type: cc.Label
         },
+        titleMenu: {
+            default: null,
+            type: cc.Node
+        },
 
         // is menu for touch the screen
         _isMenu : false,
@@ -119,5 +123,7 @@ cc.Class({
 
     setMenu: function() {
         cc.log("[Title] setMenu");
+
+        this.titleMenu.active = true;
     }
 });

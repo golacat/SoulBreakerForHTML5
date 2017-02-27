@@ -105,10 +105,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 23
+        "__id__": 24
       },
       {
-        "__id__": 24
+        "__id__": 25
       }
     ],
     "_prefab": null,
@@ -432,8 +432,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 0,
-      "height": 0
+      "width": 480,
+      "height": 800
     },
     "_children": [
       {
@@ -466,7 +466,11 @@
     "_opacityModifyRGB": false,
     "_id": "e2d30Hi9AJBD7OkHKgPaycm",
     "_active": false,
-    "_components": [],
+    "_components": [
+      {
+        "__id__": 23
+      }
+    ],
     "_prefab": null,
     "groupIndex": 0
   },
@@ -902,6 +906,18 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_atlas": null
+  },
+  {
+    "__type__": "c996b+wTvBLwLzWSl7ji/f+",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 11
+    },
+    "_enabled": true,
+    "seletedNode": {
+      "__id__": 18
+    }
   },
   {
     "__type__": "cc.Canvas",

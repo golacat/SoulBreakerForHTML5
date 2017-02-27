@@ -27,7 +27,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        cc.log("[Title] onLoad.");
+        cc.log("[TitleScene] onLoad.");
 
         this._isMenu = false;
 
@@ -55,7 +55,7 @@ cc.Class({
 
     // CallBack Title Image Scaled
     onCallBackTitleScale: function() {
-        cc.log("[Title] onCallBackTitleScale");
+        cc.log("[TitleScene] onCallBackTitleScale");
         this.titleLabel.node.opacity = 255;
         this.titleLabel.node.runAction(
             cc.sequence(
@@ -67,41 +67,42 @@ cc.Class({
     
     // CallBack Title Label Blink
     onCallBackTouchImageBlink: function() {
-        cc.log("[Title] onCallBackTouchImageBlink");
+        cc.log("[TitleScene] onCallBackTouchImageBlink");
         this.titleLabel.node.runAction(
             cc.repeatForever(cc.blink(1.0, 1))
             );
 
-        this.initTouchEvent();
+        this.onTouchEvent();
     },
 
-    // init touch event
-    initTouchEvent: function() {
-        cc.log("[Title] initTouchEvent");
+    // on touch event
+    onTouchEvent: function() {
+        cc.log("[TitleScene] onTouchEvent");
 
-        this.canvas.on(cc.Node.EventType.TOUCH_START, event => {
-            cc.log("[Title] TOUCH_START");
-            // var touches = event.getTouches();
-            // var touchLoc = touches[0].getLocation();            
-        }, this);
+        // this.canvas.on(cc.Node.EventType.TOUCH_START, event => {
+        //     cc.log("[Title] TOUCH_START");
+        //     // var touches = event.getTouches();
+        //     // var touchLoc = touches[0].getLocation();            
+        // }, this);
 
-        this.canvas.on(cc.Node.EventType.TOUCH_MOVE, event => {
-            cc.log("[Title] TOUCH_MOVE");
-            // var touches = event.getTouches();
-            // var touchLoc = touches[0].getLocation();            
-        }, this);
+        // this.canvas.on(cc.Node.EventType.TOUCH_MOVE, event => {
+        //     cc.log("[Title] TOUCH_MOVE");
+        //     // var touches = event.getTouches();
+        //     // var touchLoc = touches[0].getLocation();            
+        // }, this);
 
-        this.canvas.on(cc.Node.EventType.TOUCH_END, event => {
-            cc.log("[Title] TOUCH_END");
-            // var touches = event.getTouches();
-            // var touchLoc = touches[0].getLocation();
-            this.onTouchEnd();
-        }, this);
+        this.canvas.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
+    },
+
+    // off touch event
+    offTouchEvent: function() {
+        cc.log("[TitleScene] offTouchEvent");
+        this.canvas.off(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
     },
 
     // touch end event
     onTouchEnd: function() {
-        cc.log("[Title] onTouchEnd");
+        cc.log("[TitleScene] onTouchEnd");
         // cc.log("[Title] _isMenu is ", this._isMenu);
         if (this._isMenu == false) {
             // TOUCH THE SCREEN -> MENU
@@ -116,14 +117,17 @@ cc.Class({
 
     // call back title label fadeout
     onCallBackTouchLabelFadeOutEnd: function() {
-        cc.log("[Title] onCallBackTouchLabelFadeOutEnd");
+        cc.log("[TitleScene] onCallBackTouchLabelFadeOutEnd");
         this.node.removeChild(this.titleLabel);
         this.setMenu();
     },
 
     setMenu: function() {
-        cc.log("[Title] setMenu");
+        cc.log("[TitleScene] setMenu");
+        this.offTouchEvent();
+        this._isMenu = true;
+        this.titleMenu.active = true;        
 
-        this.titleMenu.active = true;
+        // After menu is displaied, continue at titleMenu.js... 
     }
 });

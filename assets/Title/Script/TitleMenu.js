@@ -1,3 +1,5 @@
+var SB_Constants = require('SB_Constants');
+
 cc.Class({
     extends: cc.Component,
 
@@ -12,44 +14,67 @@ cc.Class({
         //    readonly: false,    // optional, default is false
         // },
         // ...
-        seletedNode: {
+        selectedNode: {
             default: null,
             type: cc.Node
-        }
+        },
+
+        _menuNum: SB_Constants.eMenuType.START,
     },
 
     // use this for initialization
     onLoad: function () {
         cc.log("[TitleMenu] onLoad");
-        this.onTouchEvent();
+        // this.onTouchEvent();
     },
 
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {
 
     // },
-    // on touch event
-    onTouchEvent: function() {
-        cc.log("[TitleMenu] onTouchEvent");
 
-        this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
+    // callback start btn
+    onClickStartBtn: function () {
+        cc.log("[TitleMenu] onClickStartBtn");
+        this.selectedNode.y = 0;
+
+        if (this._menuNum == SB_Constants.eMenuType.START)
+        {
+            cc.log("[TitleMenu] change scene to character select");
+        }
+        else
+        {
+            this._menuNum = SB_Constants.eMenuType.START;
+        }
     },
+    
+    // callback credit btn
+    onClickCreditBtn: function () {
+        cc.log("[TitleMenu] onClickCreditBtn");
+        this.selectedNode.y = -60
 
-    // off touch event
-    offTouchEvent: function() {
-        cc.log("[TitleMenu] offTouchEvent");
-        this.node.off(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
-    },    
+        if (this._menuNum == SB_Constants.eMenuType.CREDIT)
+        {
+            cc.log("[TitleMenu] change scene to credit");
+        }
+        else
+        {
+            this._menuNum = SB_Constants.eMenuType.CREDIT;
+        }        
+    },
+    
+    // callback exit btn
+    onClickExitBtn: function () {
+        cc.log("[TitleMenu] onClickExitBtn");
+        this.selectedNode.y = -120;
 
-    // touch end event
-    onTouchEnd: function(event) {
-        cc.log("[TitleMenu] onTouchEnd");
-
-        // test
-        // this.seletedNode.y = -300;
-        // cc.log(event.getDeltaX());
-        // cc.log(event.getDeltaY());
-        // var touches = event.getTouches();
-        // var touchLoc = touches[0].getLocation();        
-    },    
+        if (this._menuNum == SB_Constants.eMenuType.EXIT)
+        {
+            cc.log("[TitleMenu] change scene to exit");
+        }
+        else
+        {
+            this._menuNum = SB_Constants.eMenuType.EXIT;
+        }        
+    }
 });

@@ -17,6 +17,15 @@ var SB_Constants = cc.Class({
             CREDIT: 2,
             EXIT: 3,
         }),
+
+        eChrSelType: cc.Enum({
+            CHRSEL_MADOKA: 1,
+            CHRSEL_HOMURA: 2,
+            CHRSEL_SAYAKA: 3,
+            CHRSEL_MAMI: 4,
+            CHRSEL_KYOKO: 5,
+            CHRSEL_BACK: 6,
+        }),
     },
 });
 

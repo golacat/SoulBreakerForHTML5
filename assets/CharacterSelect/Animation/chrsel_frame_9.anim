@@ -1,9 +1,9 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "chrsel_frame_2",
+  "_name": "chrsel_frame_9",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 6,
+  "_duration": 3.4,
   "sample": 60,
   "speed": 1,
   "wrapMode": 22,
@@ -11,16 +11,16 @@
     "props": {
       "x": [
         {
-          "frame": 0.5,
-          "value": 0
+          "frame": 0.25,
+          "value": 155
         },
         {
-          "frame": 5.5,
-          "value": 48
+          "frame": 2.85,
+          "value": 172
         },
         {
-          "frame": 6,
-          "value": 48
+          "frame": 3.4,
+          "value": 172
         }
       ]
     }
